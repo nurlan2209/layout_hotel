@@ -1,29 +1,97 @@
 {
   "common": {
+    "updates": "Жаңартулар",
+    "session": "Сессия", 
+    "minutes": "минут",
+    "user": "Пайдаланушы",
+    "userName": "Анна Цибуйская",
     "search": "Жылдам іздеу",
     "filter": "Сүзгі",
     "view": "Көрініс",
     "createTask": "Тапсырма жасау",
     "newGuest": "Жаңа қонақ",
-    "newReservation": "Жаңа брондау"
+    "newReservation": "Жаңа брондау",
+    "guest": "Қонақ",
+    "guests": "Қонақтар"
   },
   "dashboard": {
     "title": "Басқару панелі",
     "overview": "Шолу",
     "satisfactionRate": "Қанағаттану деңгейі",
     "bookings": "Брондаулар",
-    "newGuests": "Жаңа қонақтар"
+    "newGuests": "Жаңа қонақтар",
+    "manageBookings": "БРОНДАУЛАРДЫ БАСҚАРУ",
+    "thisMonthGoal": "Осы айдағы жоспар:",
+    "days": "күн",
+    "seeAllGuests": "БАРЛЫҚ ҚОНАҚТАРДЫ КӨРСЕТУ",
+    "urgentTasks": "Шұғыл және VIP тапсырмалар",
+    "seeAllTasks": "БАРЛЫҚ ТАПСЫРМАЛАР",
+    "calendar": "Күнтізбе",
+    "september": "Қыркүйек",
+    "october": "Қазан",
+    "occupied": "бос емес",
+    "activityLog": "Әрекеттер журналы",
+    "monthNames": {
+      "jan": "Қаңтар",
+      "feb": "Ақпан", 
+      "mar": "Наурыз",
+      "apr": "Сәуір",
+      "may": "Мамыр", 
+      "jun": "Маусым",
+      "jul": "Шілде",
+      "aug": "Тамыз",
+      "sep": "Қыркүйек",
+      "oct": "Қазан"
+    }
   },
   "conversations": {
     "title": "Хабарламалар",
     "online": "Желіде",
-    "replyPlaceholder": "Жауап беру..."
+    "replyPlaceholder": "Жауап беру...",
+    "createTask": "Тапсырма жасау",
+    "youAssigned": "Анна Цибуйская (сіз) осы әңгімеге тағайындалды",
+    "reaction": "Реакция",
+    "seconds": "сек",
+    "expiredChats": "Мерзімі өткен чаттар",
+    "noMessagesYet": "Әзірге хабарлама жоқ",
+    "trusted": "Сенімді",
+    "call": "Қоңырау",
+    "email": "Пошта",
+    "tasks": "Тапсырмалар",
+    "cleanRoom": "Бөлмені тазалау",
+    "changeLinenTowels": "Қонақтар шыққанда төсек жабдықтары мен сүлгілерді ауыстыру",
+    "complimentaryWine": "Комплиментке қызыл шарап бөтелкесін әкелу",
+    "allTasks": "БАРЛЫҚ ТАПСЫРМАЛАР"
   },
   "guests": {
     "title": "Қонақтар",
     "mostRecent": "Соңғы",
     "allGuests": "Барлық қонақтар",
-    "showAllGuests": "Барлық қонақтарды көрсету"
+    "showAllGuests": "Барлық қонақтарды көрсету",
+    "name": "Аты",
+    "reservations": "Брондаулар",
+    "nightsStayed": "Түндер",
+    "lastVisit": "Соңғы келуі", 
+    "group": "Топ",
+    "newReservation": "Жаңа брондау",
+    "payment": "Төлем",
+    "guestDetails": "Қонақ мәліметтері",
+    "stayDetails": "Орналасу мәліметтері",
+    "history": "Тарих",
+    "notes": "Жазбалар", 
+    "documents": "Құжаттар",
+    "contactInformation": "БАЙЛАНЫС АҚПАРАТЫ",
+    "firstName": "Аты",
+    "lastName": "Тегі",
+    "email": "Электрондық пошта",
+    "phone": "Телефон",
+    "sex": "Жынысы",
+    "address": "МЕКЕНЖАЙ",
+    "country": "Ел", 
+    "city": "Қала",
+    "familyMembers": "ОТБАСЫ МҮШЕЛЕРІ",
+    "spouse": "Жұбайы",
+    "child": "Бала"
   },
   "tasks": {
     "title": "Тапсырмалар",
@@ -33,7 +101,37 @@
       "inProgress": "Орындалуда",
       "finished": "Аяқталды", 
       "failed": "Сәтсіз"
-    }
+    },
+    "priorities": {
+      "urgent": "Шұғыл",
+      "high": "Жоғары",
+      "medium": "Орташа",
+      "low": "Төмен"
+    },
+    "statuses": {
+      "inbox": "Тағайындауды күтуде",
+      "next": "Орындауға дайын",
+      "inProgress": "Орындалуда",
+      "finished": "Аяқталды",
+      "failed": "Орындалмады"
+    },
+    "actions": {
+      "newTask": "Жаңа тапсырма",
+      "assignTask": "Тапсырманы тағайындау",
+      "completeTask": "Тапсырманы аяқтау",
+      "cancelTask": "Тапсырманы болдырмау"
+    },
+    "filters": {
+      "byPriority": "Басымдылық бойынша",
+      "byStatus": "Күй бойынша",
+      "byAssignee": "Орындаушы бойынша",
+      "byRoom": "Бөлме бойынша"
+    },
+    "showCompleted": "Аяқталғандарды көрсету",
+    "assignees": "Орындаушылар",
+    "board": "Тақта",
+    "list": "Тізім",
+    "newTask": "Жаңа тапсырма"
   },
   "rooms": {
     "title": "Бөлмелер",
@@ -45,6 +143,12 @@
       "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
       "superior": "ЛЮКС БӨЛМЕЛЕР",
       "villas": "ВИЛЛАЛАР"
-    }
+    },
+    "room": "Бөлме",
+    "maintenance": {
+      "extraBed": "Қосымша төсек",
+      "tvNotWorking": "Теледидар жұмыс істемейді"
+    },
+    "newGuest": "Жаңа қонақ"
   }
 }

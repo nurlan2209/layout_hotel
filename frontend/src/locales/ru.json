@@ -1,12 +1,18 @@
 {
   "common": {
     "updates": "Обновления",
-    "session": "Сессия", 
+    "session": "Сессия",
     "minutes": "минут",
     "user": "Пользователь",
     "userName": "Анна Цибуйская",
     "search": "Быстрый поиск",
-    "filter": "Фильтр"
+    "filter": "Фильтр",
+    "view": "Просмотр",
+    "createTask": "Создать задачу",
+    "newGuest": "Новый гость",
+    "newReservation": "Новое бронирование",
+    "guest": "Гость",
+    "guests": "Гости"
   },
   "dashboard": {
     "title": "Панель управления",
@@ -27,10 +33,10 @@
     "activityLog": "Журнал активности",
     "monthNames": {
       "jan": "Январь",
-      "feb": "Февраль", 
+      "feb": "Февраль",
       "mar": "Март",
       "apr": "Апрель",
-      "may": "Май", 
+      "may": "Май",
       "jun": "Июнь",
       "jul": "Июль",
       "aug": "Август",
@@ -65,14 +71,14 @@
     "name": "Имя",
     "reservations": "Бронирования",
     "nightsStayed": "Ночей",
-    "lastVisit": "Последний визит", 
+    "lastVisit": "Последний визит",
     "group": "Группа",
     "newReservation": "Новое бронирование",
     "payment": "Оплата",
     "guestDetails": "Данные гостя",
     "stayDetails": "Детали размещения",
     "history": "История",
-    "notes": "Заметки", 
+    "notes": "Заметки",
     "documents": "Документы",
     "contactInformation": "КОНТАКТНАЯ ИНФОРМАЦИЯ",
     "firstName": "Имя",
@@ -81,7 +87,7 @@
     "phone": "Телефон",
     "sex": "Пол",
     "address": "АДРЕС",
-    "country": "Страна", 
+    "country": "Страна",
     "city": "Город",
     "familyMembers": "ЧЛЕНЫ СЕМЬИ",
     "spouse": "Супруг(а)",
@@ -92,7 +98,7 @@
     "columns": {
       "inbox": "Входящие",
       "next": "Следующие",
-      "inProgress": "В работе", 
+      "inProgress": "В работе",
       "finished": "Выполнены",
       "failed": "Провалены"
     },
@@ -124,7 +130,8 @@
     "showCompleted": "Показать выполненные",
     "assignees": "Исполнители",
     "board": "Доска",
-    "list": "Список"
+    "list": "Список",
+    "newTask": "Новая задача"
   },
   "rooms": {
     "title": "Комнаты",
@@ -136,6 +143,12 @@
       "standard": "СТАНДАРТНЫЕ НОМЕРА",
       "superior": "НОМЕРА ЛЮКС",
       "villas": "ВИЛЛЫ"
-    }
+    },
+    "room": "Комната",
+    "maintenance": {
+      "extraBed": "Дополнительная кровать",
+      "tvNotWorking": "Телевизор не работает"
+    },
+    "newGuest": "Новый гость"
   }
 }

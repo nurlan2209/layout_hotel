@@ -112,17 +112,6 @@ const Rooms = () => {
           ))}
         </div>
       </div>
-
-      <div className="beach-illustration">
-        <div className="sun"></div>
-        <div className="clouds">
-          <div className="cloud"></div>
-          <div className="cloud"></div>
-          <div className="cloud"></div>
-        </div>
-        <div className="water"></div>
-        <div className="sand"></div>
-      </div>
     </>
   );
 
