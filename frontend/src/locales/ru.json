@@ -133,22 +133,37 @@
     "list": "Список",
     "newTask": "Новая задача"
   },
-  "rooms": {
+    "rooms": {
     "title": "Комнаты",
     "views": {
-      "timeline": "Временная шкала",
-      "scheme": "Схема"
+        "timeline": "Временная шкала",
+        "scheme": "Схема"
     },
     "roomTypes": {
-      "standard": "СТАНДАРТНЫЕ НОМЕРА",
-      "superior": "НОМЕРА ЛЮКС",
-      "villas": "ВИЛЛЫ"
+        "standard": "СТАНДАРТНЫЕ НОМЕРА",
+        "superior": "НОМЕРА ЛЮКС",
+        "villas": "ВИЛЛЫ"
     },
     "room": "Комната",
-    "maintenance": {
-      "extraBed": "Дополнительная кровать",
-      "tvNotWorking": "Телевизор не работает"
+    "type": "Тип",
+    "statuses": {
+        "occupied": "Занято",
+        "available": "Доступно",
+        "maintenance": "На обслуживании"
     },
-    "newGuest": "Новый гость"
+    "maintenance": {
+        "extraBed": "Дополнительная кровать",
+        "tvNotWorking": "Телевизор не работает"
+    },
+    "newGuest": "Новый гость",
+    "currentGuests": "Текущие гости",
+    "checkIn": "Дата заезда",
+    "checkOut": "Дата выезда",
+    "maintenanceInfo": "Информация об обслуживании",
+    "actions": {
+        "book": "Забронировать",
+        "messageGuest": "Написать гостю",
+        "viewHistory": "История"
+    }
   }
 }

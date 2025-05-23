@@ -133,22 +133,37 @@
     "list": "Тізім",
     "newTask": "Жаңа тапсырма"
   },
-  "rooms": {
+    "rooms": {
     "title": "Бөлмелер",
     "views": {
-      "timeline": "Уақыт желісі",
-      "scheme": "Сызба"
+        "timeline": "Уақыт шкаласы",
+        "scheme": "Сызба"
     },
     "roomTypes": {
-      "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
-      "superior": "ЛЮКС БӨЛМЕЛЕР",
-      "villas": "ВИЛЛАЛАР"
+        "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
+        "superior": "ЛЮКС БӨЛМЕЛЕР",
+        "villas": "ВИЛЛАЛАР"
     },
     "room": "Бөлме",
-    "maintenance": {
-      "extraBed": "Қосымша төсек",
-      "tvNotWorking": "Теледидар жұмыс істемейді"
+    "type": "Түрі",
+    "statuses": {
+        "occupied": "Бос емес",
+        "available": "Бос",
+        "maintenance": "Қызмет көрсетілуде"
     },
-    "newGuest": "Жаңа қонақ"
-  }
+    "maintenance": {
+        "extraBed": "Қосымша төсек",
+        "tvNotWorking": "Теледидар істемейді"
+    },
+    "newGuest": "Жаңа қонақ",
+    "currentGuests": "Қазіргі қонақтар",
+    "checkIn": "Келу күні",
+    "checkOut": "Кету күні",
+    "maintenanceInfo": "Қызмет көрсету туралы ақпарат",
+    "actions": {
+        "book": "Брондау",
+        "messageGuest": "Қонаққа хабарлама жазу",
+        "viewHistory": "Тарихы"
+    }
+    }
 }

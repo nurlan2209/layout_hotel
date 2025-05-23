@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { FiSearch, FiFilter, FiList, FiGrid } from 'react-icons/fi';
 import { useTranslation } from '../../contexts/LanguageContext';
+import RoomCard from './RoomCard';
+import RoomModal from './RoomModal';
 import './Rooms.css';
 
 const Rooms = () => {
   const { t } = useTranslation();
   const [rooms, setRooms] = useState([]);
   const [viewMode, setViewMode] = useState('grid');
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -21,38 +24,25 @@ const Rooms = () => {
   const superiorRooms = rooms.filter(r => r.type === 'Superior');
   const villas = rooms.filter(r => r.type === 'Villa');
 
+  const handleRoomClick = (room) => {
+    setSelectedRoom(room);
+  };
+
+  const closeModal = () => {
+    setSelectedRoom(null);
+  };
+
   const renderGridView = () => (
     <>
       <div className="room-section">
         <h3>{t('rooms.roomTypes.standard')}</h3>
         <div className="rooms-grid">
           {standardRooms.map(room => (
-            <div key={room.id} className={`room-card ${room.status}`}>
-              <h4>{t('rooms.room')} {room.number}</h4>
-              {room.status === 'occupied' && room.currentGuests.length > 0 && (
-                <div className="guest-avatars">
-                  {room.currentGuests.map((guest, i) => (
-                    <img 
-                      key={i}
-                      src={`https://i.pravatar.cc/32?img=${room.id + i + 90}`} 
-                      alt={guest} 
-                    />
-                  ))}
-                </div>
-              )}
-              {room.checkInDate && (
-                <p className="dates">{room.checkInDate.split('-')[1]} {room.checkInDate.split('-')[2]} - {room.checkOutDate.split('-')[1]} {room.checkOutDate.split('-')[2]}</p>
-              )}
-              {room.status === 'maintenance' && (
-                <div className="maintenance-badge">🔧</div>
-              )}
-              {room.status === 'occupied' && (
-                <div className="occupied-indicator">!</div>
-              )}
-              {room.status === 'available' && (
-                <div className="available-indicator">🔗</div>
-              )}
-            </div>
+            <RoomCard 
+              key={room.id} 
+              room={room} 
+              onClick={() => handleRoomClick(room)} 
+            />
           ))}
         </div>
       </div>
@@ -61,23 +51,11 @@ const Rooms = () => {
         <h3>{t('rooms.roomTypes.superior')}</h3>
         <div className="rooms-grid">
           {superiorRooms.map(room => (
-            <div key={room.id} className={`room-card ${room.status}`}>
-              <h4>{t('rooms.room')} {room.number}</h4>
-              {room.status === 'occupied' && room.currentGuests.length > 0 && (
-                <div className="guest-avatars">
-                  {room.currentGuests.map((guest, i) => (
-                    <img 
-                      key={i}
-                      src={`https://i.pravatar.cc/32?img=${room.id + i + 90}`} 
-                      alt={guest} 
-                    />
-                  ))}
-                </div>
-              )}
-              {room.checkInDate && (
-                <p className="dates">{room.checkInDate.split('-')[1]} {room.checkInDate.split('-')[2]} - {room.checkOutDate.split('-')[1]} {room.checkOutDate.split('-')[2]}</p>
-              )}
-            </div>
+            <RoomCard 
+              key={room.id} 
+              room={room} 
+              onClick={() => handleRoomClick(room)} 
+            />
           ))}
         </div>
       </div>
@@ -86,29 +64,11 @@ const Rooms = () => {
         <h3>{t('rooms.roomTypes.villas')}</h3>
         <div className="rooms-grid villas-grid">
           {villas.map(room => (
-            <div key={room.id} className={`room-card villa ${room.status}`}>
-              {room.status === 'maintenance' && (
-                <div className="maintenance-banner">
-                  {t('rooms.maintenance.extraBed')}<br/>
-                  {t('rooms.maintenance.tvNotWorking')}
-                </div>
-              )}
-              <h4>{room.number}</h4>
-              {room.status === 'occupied' && room.currentGuests.length > 0 && (
-                <div className="guest-avatars">
-                  {room.currentGuests.map((guest, i) => (
-                    <img 
-                      key={i}
-                      src={`https://i.pravatar.cc/32?img=${room.id + i + 90}`} 
-                      alt={guest} 
-                    />
-                  ))}
-                </div>
-              )}
-              {room.checkInDate && (
-                <p className="dates">{room.checkInDate.split('-')[1]} {room.checkInDate.split('-')[2]} - {room.checkOutDate.split('-')[1]} {room.checkOutDate.split('-')[2]}</p>
-              )}
-            </div>
+            <RoomCard 
+              key={room.id} 
+              room={room} 
+              onClick={() => handleRoomClick(room)} 
+            />
           ))}
         </div>
       </div>
@@ -131,15 +91,38 @@ const Rooms = () => {
           <div className="timeline-labels">
             <div className="label-section">{t('rooms.roomTypes.standard')}</div>
             {standardRooms.map(room => (
-              <div key={room.id} className="room-label">{t('rooms.room')} {room.number}</div>
+              <div 
+                key={room.id} 
+                className="room-label" 
+                onClick={() => handleRoomClick(room)}
+                style={{ cursor: 'pointer' }}
+              >
+                {t('rooms.room')} {room.number}
+              </div>
             ))}
+            
             <div className="label-section">{t('rooms.roomTypes.superior')}</div>
             {superiorRooms.map(room => (
-              <div key={room.id} className="room-label">{t('rooms.room')} {room.number}</div>
+              <div 
+                key={room.id} 
+                className="room-label"
+                onClick={() => handleRoomClick(room)}
+                style={{ cursor: 'pointer' }}
+              >
+                {t('rooms.room')} {room.number}
+              </div>
             ))}
+            
             <div className="label-section">{t('rooms.roomTypes.villas')}</div>
             {villas.map(room => (
-              <div key={room.id} className="room-label">{room.number}</div>
+              <div 
+                key={room.id} 
+                className="room-label"
+                onClick={() => handleRoomClick(room)}
+                style={{ cursor: 'pointer' }}
+              >
+                {room.number}
+              </div>
             ))}
           </div>
 
@@ -158,17 +141,29 @@ const Rooms = () => {
               {standardRooms.map(room => (
                 <div key={room.id} className="timeline-row">
                   {room.number === '103' && (
-                    <div className="booking-bar" style={{ gridColumn: '1 / 14', backgroundColor: '#90c695' }}>
+                    <div 
+                      className="booking-bar" 
+                      style={{ gridColumn: '1 / 14', backgroundColor: '#90c695' }}
+                      onClick={() => handleRoomClick(room)}
+                    >
                       Keniesha Wood
                     </div>
                   )}
                   {room.number === '105' && (
-                    <div className="booking-bar" style={{ gridColumn: '2 / 8', backgroundColor: '#90c695' }}>
+                    <div 
+                      className="booking-bar" 
+                      style={{ gridColumn: '2 / 8', backgroundColor: '#90c695' }}
+                      onClick={() => handleRoomClick(room)}
+                    >
                       Alex Walker
                     </div>
                   )}
                   {room.number === '107' && (
-                    <div className="booking-bar" style={{ gridColumn: '6 / 8', backgroundColor: '#5bc0de' }}>
+                    <div 
+                      className="booking-bar" 
+                      style={{ gridColumn: '6 / 8', backgroundColor: '#5bc0de' }}
+                      onClick={() => handleRoomClick(room)}
+                    >
                       {t('rooms.newGuest')} →
                     </div>
                   )}
@@ -179,7 +174,11 @@ const Rooms = () => {
               {superiorRooms.map(room => (
                 <div key={room.id} className="timeline-row">
                   {room.number === '202' && (
-                    <div className="booking-bar" style={{ gridColumn: '1 / 19', backgroundColor: '#90c695' }}>
+                    <div 
+                      className="booking-bar" 
+                      style={{ gridColumn: '1 / 19', backgroundColor: '#90c695' }}
+                      onClick={() => handleRoomClick(room)}
+                    >
                       Usha Oliver
                     </div>
                   )}
@@ -190,7 +189,11 @@ const Rooms = () => {
               {villas.map(room => (
                 <div key={room.id} className="timeline-row">
                   {room.number === 'Villa 2' && (
-                    <div className="booking-bar" style={{ gridColumn: '6 / 8', backgroundColor: '#90c695' }}>
+                    <div 
+                      className="booking-bar" 
+                      style={{ gridColumn: '6 / 8', backgroundColor: '#90c695' }}
+                      onClick={() => handleRoomClick(room)}
+                    >
                       Sung Jin-Shil
                     </div>
                   )}
@@ -236,6 +239,10 @@ const Rooms = () => {
       <div className="rooms-content">
         {viewMode === 'grid' ? renderGridView() : renderTimelineView()}
       </div>
+      
+      {selectedRoom && (
+        <RoomModal room={selectedRoom} onClose={closeModal} />
+      )}
     </div>
   );
 };
