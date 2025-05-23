@@ -12,7 +12,8 @@
     "newGuest": "Новый гость",
     "newReservation": "Новое бронирование",
     "guest": "Гость",
-    "guests": "Гости"
+    "guests": "Гости",
+    "cancel": "Отмена"
   },
   "dashboard": {
     "title": "Панель управления",
@@ -133,27 +134,27 @@
     "list": "Список",
     "newTask": "Новая задача"
   },
-    "rooms": {
+  "rooms": {
     "title": "Комнаты",
     "views": {
-        "timeline": "Временная шкала",
-        "scheme": "Схема"
+      "timeline": "Временная шкала",
+      "scheme": "Схема"
     },
     "roomTypes": {
-        "standard": "СТАНДАРТНЫЕ НОМЕРА",
-        "superior": "НОМЕРА ЛЮКС",
-        "villas": "ВИЛЛЫ"
+      "standard": "СТАНДАРТНЫЕ НОМЕРА",
+      "superior": "НОМЕРА ЛЮКС",
+      "villas": "ВИЛЛЫ"
     },
     "room": "Комната",
     "type": "Тип",
     "statuses": {
-        "occupied": "Занято",
-        "available": "Доступно",
-        "maintenance": "На обслуживании"
+      "occupied": "Занято",
+      "available": "Доступно",
+      "maintenance": "На обслуживании"
     },
     "maintenance": {
-        "extraBed": "Дополнительная кровать",
-        "tvNotWorking": "Телевизор не работает"
+      "extraBed": "Дополнительная кровать",
+      "tvNotWorking": "Телевизор не работает"
     },
     "newGuest": "Новый гость",
     "currentGuests": "Текущие гости",
@@ -161,9 +162,40 @@
     "checkOut": "Дата выезда",
     "maintenanceInfo": "Информация об обслуживании",
     "actions": {
-        "book": "Забронировать",
-        "messageGuest": "Написать гостю",
-        "viewHistory": "История"
+      "book": "Забронировать",
+      "messageGuest": "Написать гостю",
+      "viewHistory": "История"
+    }
+  },
+  "booking": {
+    "title": "Бронирование номера",
+    "rentalPeriod": "Период аренды номера",
+    "checkInDate": "Дата заезда",
+    "checkOutDate": "Дата выезда",
+    "nights": "Количество ночей: {count}",
+    "guestCount": "Количество гостей",
+    "guestInformation": "Информация о гостях",
+    "guest": "Гость",
+    "fullName": "ФИО",
+    "fullNamePlaceholder": "Иванов Иван Иванович",
+    "phone": "Номер телефона",
+    "documentType": "Тип документа",
+    "documentNumber": "Номер документа",
+    "passport": "Паспорт",
+    "idCard": "Удостоверение личности",
+    "paymentMethod": "Способ оплаты",
+    "cash": "Наличные",
+    "card": "Безналичный",
+    "confirmBooking": "Подтвердить бронирование",
+    "success": "Номер {room} успешно забронирован!",
+    "errors": {
+      "checkInRequired": "Укажите дату заезда",
+      "checkOutRequired": "Укажите дату выезда",
+      "invalidDateRange": "Дата выезда должна быть позже даты заезда",
+      "pastDate": "Дата заезда не может быть в прошлом",
+      "fullNameRequired": "Укажите ФИО",
+      "phoneRequired": "Укажите номер телефона",
+      "documentRequired": "Укажите номер документа"
     }
   }
 }

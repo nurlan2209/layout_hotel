@@ -12,7 +12,8 @@
     "newGuest": "Жаңа қонақ",
     "newReservation": "Жаңа брондау",
     "guest": "Қонақ",
-    "guests": "Қонақтар"
+    "guests": "Қонақтар",
+    "cancel": "Бас тарту"
   },
   "dashboard": {
     "title": "Басқару панелі",
@@ -53,7 +54,7 @@
     "reaction": "Реакция",
     "seconds": "сек",
     "expiredChats": "Мерзімі өткен чаттар",
-    "noMessagesYet": "Әзірге хабарлама жоқ",
+    "noMessagesYet": "Әзірше хабарлама жоқ",
     "trusted": "Сенімді",
     "call": "Қоңырау",
     "email": "Пошта",
@@ -133,27 +134,27 @@
     "list": "Тізім",
     "newTask": "Жаңа тапсырма"
   },
-    "rooms": {
+  "rooms": {
     "title": "Бөлмелер",
     "views": {
-        "timeline": "Уақыт шкаласы",
-        "scheme": "Сызба"
+      "timeline": "Уақыт шкаласы",
+      "scheme": "Сызба"
     },
     "roomTypes": {
-        "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
-        "superior": "ЛЮКС БӨЛМЕЛЕР",
-        "villas": "ВИЛЛАЛАР"
+      "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
+      "superior": "ЛЮКС БӨЛМЕЛЕР",
+      "villas": "ВИЛЛАЛАР"
     },
     "room": "Бөлме",
     "type": "Түрі",
     "statuses": {
-        "occupied": "Бос емес",
-        "available": "Бос",
-        "maintenance": "Қызмет көрсетілуде"
+      "occupied": "Бос емес",
+      "available": "Бос",
+      "maintenance": "Қызмет көрсетілуде"
     },
     "maintenance": {
-        "extraBed": "Қосымша төсек",
-        "tvNotWorking": "Теледидар істемейді"
+      "extraBed": "Қосымша төсек",
+      "tvNotWorking": "Теледидар істемейді"
     },
     "newGuest": "Жаңа қонақ",
     "currentGuests": "Қазіргі қонақтар",
@@ -161,9 +162,40 @@
     "checkOut": "Кету күні",
     "maintenanceInfo": "Қызмет көрсету туралы ақпарат",
     "actions": {
-        "book": "Брондау",
-        "messageGuest": "Қонаққа хабарлама жазу",
-        "viewHistory": "Тарихы"
+      "book": "Брондау",
+      "messageGuest": "Қонаққа хабарлама жазу",
+      "viewHistory": "Тарихы"
     }
+  },
+  "booking": {
+    "title": "Бөлме брондау",
+    "rentalPeriod": "Жалға алу мерзімі",
+    "checkInDate": "Келу күні",
+    "checkOutDate": "Кету күні",
+    "nights": "Түндер саны: {count}",
+    "guestCount": "Қонақтар саны",
+    "guestInformation": "Қонақтар туралы ақпарат",
+    "guest": "Қонақ",
+    "fullName": "Толық аты",
+    "fullNamePlaceholder": "Иванов Иван Иванович",
+    "phone": "Телефон нөмірі",
+    "documentType": "Құжат түрі",
+    "documentNumber": "Құжат нөмірі",
+    "passport": "Паспорт",
+    "idCard": "Жеке куәлік",
+    "paymentMethod": "Төлем тәсілі",
+    "cash": "Қолма-қол ақша",
+    "card": "Қолма-қол емес",
+    "confirmBooking": "Брондауды растау",
+    "success": "{room} номері сәтті брондалды!",
+    "errors": {
+      "checkInRequired": "Келу күнін көрсетіңіз",
+      "checkOutRequired": "Кету күнін көрсетіңіз",
+      "invalidDateRange": "Кету күні келу күнінен кейін болуы керек",
+      "pastDate": "Келу күні өткен уақытта болмауы керек",
+      "fullNameRequired": "Толық атын көрсетіңіз",
+      "phoneRequired": "Телефон нөмірін көрсетіңіз",
+      "documentRequired": "Құжат нөмірін көрсетіңіз"
     }
+  }
 }
