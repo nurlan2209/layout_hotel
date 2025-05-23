@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { 
   FiHome, 
@@ -6,23 +7,22 @@ import {
   FiCheckSquare, 
   FiGrid,
   FiSettings,
-  FiHelpCircle
+  FiHelpCircle,
+  FiGlobe
 } from 'react-icons/fi';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './Layout.css';
 
 const Layout = ({ children }) => {
-  const location = useLocation();
-  const currentTime = new Date().toLocaleTimeString('en-US', { 
-    hour: '2-digit', 
-    minute: '2-digit' 
-  });
+  const { t, language, setLanguage, languages } = useTranslation();
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
 
   const navItems = [
-    { path: '/', icon: FiHome, label: 'Dashboard' },
-    { path: '/conversations', icon: FiMessageCircle, label: 'Conversations' },
-    { path: '/guests', icon: FiUsers, label: 'Guests' },
-    { path: '/tasks', icon: FiCheckSquare, label: 'Tasks' },
-    { path: '/rooms', icon: FiGrid, label: 'Rooms' }
+    { path: '/', icon: FiHome, label: t('dashboard.title') },
+    { path: '/conversations', icon: FiMessageCircle, label: t('conversations.title') },
+    { path: '/guests', icon: FiUsers, label: t('guests.title') },
+    { path: '/tasks', icon: FiCheckSquare, label: t('tasks.title') },
+    { path: '/rooms', icon: FiGrid, label: t('rooms.title') }
   ];
 
   return (
@@ -45,6 +45,28 @@ const Layout = ({ children }) => {
         </nav>
 
         <div className="sidebar-footer">
+          <button 
+            className="nav-item language-selector"
+            onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+          >
+            <FiGlobe size={20} />
+          </button>
+          {showLanguageMenu && (
+            <div className="language-menu">
+              {languages.map(lang => (
+                <button 
+                  key={lang.code}
+                  onClick={() => {
+                    setLanguage(lang.code);
+                    setShowLanguageMenu(false);
+                  }}
+                  className={language === lang.code ? 'active' : ''}
+                >
+                  {lang.name}
+                </button>
+              ))}
+            </div>
+          )}
           <button className="nav-item">
             <FiSettings size={20} />
           </button>
@@ -52,7 +74,7 @@ const Layout = ({ children }) => {
             <FiHelpCircle size={20} />
           </button>
           <div className="user-avatar">
-            <img src="https://i.pravatar.cc/150?img=3" alt="User" />
+            <img src="https://i.pravatar.cc/150?img=3" alt={t('common.user')} />
           </div>
         </div>
       </aside>
@@ -60,11 +82,11 @@ const Layout = ({ children }) => {
       <div className="main-container">
         <header className="header">
           <div className="header-left">
-            <span className="update-status">Updates</span>
+            <span className="update-status">{t('common.updates')}</span>
           </div>
           <div className="header-right">
-            <span className="session-time">Session: 34 minutes</span>
-            <span className="user-name">User: Ann Tsibuiski</span>
+            <span className="session-time">{t('common.session')}: 34 {t('common.minutes')}</span>
+            <span className="user-name">{t('common.user')}: {t('common.userName')}</span>
           </div>
         </header>
 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { FiSearch, FiFilter, FiList, FiGrid, FiCalendar } from 'react-icons/fi';
+import { FiSearch, FiFilter, FiList, FiGrid } from 'react-icons/fi';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './Rooms.css';
 
 const Rooms = () => {
+  const { t } = useTranslation();
   const [rooms, setRooms] = useState([]);
   const [viewMode, setViewMode] = useState('grid');
 
@@ -15,29 +17,18 @@ const Rooms = () => {
     loadData();
   }, []);
 
-  // Group rooms by type
   const standardRooms = rooms.filter(r => r.type === 'Standard');
   const superiorRooms = rooms.filter(r => r.type === 'Superior');
   const villas = rooms.filter(r => r.type === 'Villa');
 
-  // Timeline view data
-  const timelineData = [
-    { room: '103', guest: 'Keniesha Wood', dates: 'Jun 17 - Jun 30', color: '#90c695' },
-    { room: '105', guest: 'Alex Walker', dates: 'Jun 18 - Jun 24', color: '#90c695' },
-    { room: '107', guest: 'New guest', dates: 'Jun 23 - Jun 24', color: '#5bc0de' },
-    { room: '202', guest: 'Usha Oliver', dates: 'Jun 10 - Jul 5', color: '#90c695' },
-    { room: 'Villa 2', guest: 'Sung Jin-Shil', dates: 'Jun 22 - Jun 24', color: '#90c695' }
-  ];
-
   const renderGridView = () => (
     <>
-      {/* Standard Rooms */}
       <div className="room-section">
-        <h3>STANDARD ROOMS</h3>
+        <h3>{t('rooms.roomTypes.standard')}</h3>
         <div className="rooms-grid">
           {standardRooms.map(room => (
             <div key={room.id} className={`room-card ${room.status}`}>
-              <h4>Room {room.number}</h4>
+              <h4>{t('rooms.room')} {room.number}</h4>
               {room.status === 'occupied' && room.currentGuests.length > 0 && (
                 <div className="guest-avatars">
                   {room.currentGuests.map((guest, i) => (
@@ -66,13 +57,12 @@ const Rooms = () => {
         </div>
       </div>
 
-      {/* Superior Rooms */}
       <div className="room-section">
-        <h3>SUPERIOR ROOMS</h3>
+        <h3>{t('rooms.roomTypes.superior')}</h3>
         <div className="rooms-grid">
           {superiorRooms.map(room => (
             <div key={room.id} className={`room-card ${room.status}`}>
-              <h4>Room {room.number}</h4>
+              <h4>{t('rooms.room')} {room.number}</h4>
               {room.status === 'occupied' && room.currentGuests.length > 0 && (
                 <div className="guest-avatars">
                   {room.currentGuests.map((guest, i) => (
@@ -92,16 +82,15 @@ const Rooms = () => {
         </div>
       </div>
 
-      {/* Villas */}
       <div className="room-section">
-        <h3>VILLAS</h3>
+        <h3>{t('rooms.roomTypes.villas')}</h3>
         <div className="rooms-grid villas-grid">
           {villas.map(room => (
             <div key={room.id} className={`room-card villa ${room.status}`}>
               {room.status === 'maintenance' && (
                 <div className="maintenance-banner">
-                  Bring extra bed<br/>
-                  TV is not working
+                  {t('rooms.maintenance.extraBed')}<br/>
+                  {t('rooms.maintenance.tvNotWorking')}
                 </div>
               )}
               <h4>{room.number}</h4>
@@ -124,7 +113,6 @@ const Rooms = () => {
         </div>
       </div>
 
-      {/* Beach Illustration */}
       <div className="beach-illustration">
         <div className="sun"></div>
         <div className="clouds">
@@ -152,15 +140,15 @@ const Rooms = () => {
         
         <div className="timeline-grid">
           <div className="timeline-labels">
-            <div className="label-section">STANDARD ROOMS</div>
+            <div className="label-section">{t('rooms.roomTypes.standard')}</div>
             {standardRooms.map(room => (
-              <div key={room.id} className="room-label">Room {room.number}</div>
+              <div key={room.id} className="room-label">{t('rooms.room')} {room.number}</div>
             ))}
-            <div className="label-section">SUPERIOR ROOMS</div>
+            <div className="label-section">{t('rooms.roomTypes.superior')}</div>
             {superiorRooms.map(room => (
-              <div key={room.id} className="room-label">Room {room.number}</div>
+              <div key={room.id} className="room-label">{t('rooms.room')} {room.number}</div>
             ))}
-            <div className="label-section">VILLAS</div>
+            <div className="label-section">{t('rooms.roomTypes.villas')}</div>
             {villas.map(room => (
               <div key={room.id} className="room-label">{room.number}</div>
             ))}
@@ -177,7 +165,6 @@ const Rooms = () => {
             </div>
 
             <div className="timeline-rows">
-              {/* Standard Rooms Timeline */}
               <div className="timeline-section-row"></div>
               {standardRooms.map(room => (
                 <div key={room.id} className="timeline-row">
@@ -193,13 +180,12 @@ const Rooms = () => {
                   )}
                   {room.number === '107' && (
                     <div className="booking-bar" style={{ gridColumn: '6 / 8', backgroundColor: '#5bc0de' }}>
-                      New guest →
+                      {t('rooms.newGuest')} →
                     </div>
                   )}
                 </div>
               ))}
 
-              {/* Superior Rooms Timeline */}
               <div className="timeline-section-row"></div>
               {superiorRooms.map(room => (
                 <div key={room.id} className="timeline-row">
@@ -211,7 +197,6 @@ const Rooms = () => {
                 </div>
               ))}
 
-              {/* Villas Timeline */}
               <div className="timeline-section-row"></div>
               {villas.map(room => (
                 <div key={room.id} className="timeline-row">
@@ -232,28 +217,28 @@ const Rooms = () => {
   return (
     <div className="rooms">
       <div className="rooms-header">
-        <h1>Rooms</h1>
+        <h1>{t('rooms.title')}</h1>
         <div className="header-controls">
           <div className="search-box">
             <FiSearch />
-            <input type="text" placeholder="Quick search" />
+            <input type="text" placeholder={t('common.search')} />
           </div>
           <button className="filter-btn">
-            <FiFilter /> Filter
+            <FiFilter /> {t('common.filter')}
           </button>
           <div className="view-toggle">
-            <span>View:</span>
+            <span>{t('common.view')}:</span>
             <button 
               className={viewMode === 'timeline' ? 'active' : ''}
               onClick={() => setViewMode('timeline')}
             >
-              <FiList /> Timeline
+              <FiList /> {t('rooms.views.timeline')}
             </button>
             <button 
               className={viewMode === 'grid' ? 'active' : ''}
               onClick={() => setViewMode('grid')}
             >
-              <FiGrid /> Scheme
+              <FiGrid /> {t('rooms.views.scheme')}
             </button>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { FiMoreHorizontal } from 'react-icons/fi';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState({
     bookings: [],
     satisfactionRate: {},
@@ -13,7 +14,6 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    // Load mock data
     const loadData = async () => {
       const bookingsData = await import('../../mockData/bookings.json');
       const activitiesData = await import('../../mockData/activities.json');
@@ -31,26 +31,25 @@ const Dashboard = () => {
     loadData();
   }, []);
 
-  // Calendar data
-  const calendarDate = new Date(2018, 8); // September 2018
+  const calendarDate = new Date(2018, 8);
   const firstDay = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 1).getDay();
   const daysInMonth = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0).getDate();
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>Dashboard</h1>
-        <button className="overview-btn">Overview ▼</button>
+        <h1>{t('dashboard.title')}</h1>
+        <button className="overview-btn">{t('dashboard.overview')} ▼</button>
         <div className="dashboard-actions">
-          <button className="btn-primary">👤 New Guest</button>
-          <button className="btn-outline">📋 New Reservation</button>
+          <button className="btn-primary">👤 {t('common.newGuest')}</button>
+          <button className="btn-outline">📋 {t('common.newReservation')}</button>
         </div>
       </div>
 
       <div className="dashboard-grid">
         {/* Satisfaction Rate Card */}
         <div className="card">
-          <h3>Satisfaction rate</h3>
+          <h3>{t('dashboard.satisfactionRate')}</h3>
           <div className="satisfaction-rate">
             <span className="rate-value">{data.satisfactionRate.current}%</span>
             <span className="rate-change">↑ {data.satisfactionRate.change}%</span>
@@ -65,8 +64,8 @@ const Dashboard = () => {
         {/* Bookings Chart */}
         <div className="card chart-card">
           <div className="card-header">
-            <h3>Bookings</h3>
-            <span className="card-subtitle">MANAGE BOOKINGS</span>
+            <h3>{t('dashboard.bookings')}</h3>
+            <span className="card-subtitle">{t('dashboard.manageBookings')}</span>
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={data.bookings}>
@@ -81,7 +80,7 @@ const Dashboard = () => {
 
         {/* New Guests Card */}
         <div className="card">
-          <h3>New Guests</h3>
+          <h3>{t('dashboard.newGuests')}</h3>
           <div className="new-guests-header">
             <span className="guests-value">{data.newGuests.current}</span>
             <span className="guests-change">↑ {data.newGuests.change}%</span>
@@ -92,27 +91,27 @@ const Dashboard = () => {
               style={{ width: `${(data.newGuests.current / data.newGuests.goal) * 100}%` }}
             />
           </div>
-          <p className="progress-text">This month goal is {data.newGuests.goal}</p>
+          <p className="progress-text">{t('dashboard.thisMonthGoal')} {data.newGuests.goal}</p>
           <div className="guest-list">
             {data.newGuests.thisMonth?.map((guest, i) => (
               <div key={i} className="guest-item">
                 <img src={`https://i.pravatar.cc/40?img=${i+10}`} alt={guest.name} />
                 <span className="guest-name">{guest.name}</span>
-                <span className="guest-time">{guest.daysAgo} days</span>
+                <span className="guest-time">{guest.daysAgo} {t('dashboard.days')}</span>
               </div>
             ))}
           </div>
-          <button className="see-all-btn">SEE ALL GUESTS</button>
+          <button className="see-all-btn">{t('dashboard.seeAllGuests')}</button>
         </div>
 
         {/* Urgent Tasks */}
         <div className="card tasks-card">
-          <h3>Urgent & vip tasks</h3>
+          <h3>{t('dashboard.urgentTasks')}</h3>
           {data.tasks.map(task => (
             <div key={task.id} className="task-item">
               <div className="task-content">
                 <h4>{task.title}</h4>
-                <p>Room {task.room}</p>
+                <p>{t('rooms.room')} {task.room}</p>
               </div>
               <div className="task-assignee">
                 {task.assignee && (
@@ -121,14 +120,14 @@ const Dashboard = () => {
               </div>
             </div>
           ))}
-          <button className="see-all-btn">SEE ALL TASKS</button>
+          <button className="see-all-btn">{t('dashboard.seeAllTasks')}</button>
         </div>
 
         {/* Calendar */}
         <div className="card calendar-card">
-          <h3>Calendar</h3>
+          <h3>{t('dashboard.calendar')}</h3>
           <div className="calendar-header">
-            <span>September</span>
+            <span>{t('dashboard.september')}</span>
           </div>
           <div className="calendar-grid">
             <div className="weekdays">
@@ -152,50 +151,50 @@ const Dashboard = () => {
           </div>
           <div className="calendar-events">
             <div className="event-item">
-              <h4>September 8</h4>
-              <p className="room-info">Room 103</p>
+              <h4>{t('dashboard.september')} 8</h4>
+              <p className="room-info">{t('rooms.room')} 103</p>
               <div className="guest-avatars">
                 {[1,2,3].map(i => (
-                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt="Guest" />
+                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt={t('common.guest')} />
                 ))}
-                <span>3 guests</span>
+                <span>3 {t('common.guests')}</span>
               </div>
-              <p className="event-date">Sept 4 — Sept 12</p>
+              <p className="event-date">{t('dashboard.september')} 4 — {t('dashboard.september')} 12</p>
             </div>
             <div className="event-item">
-              <p className="room-info">Room 202</p>
+              <p className="room-info">{t('rooms.room')} 202</p>
               <div className="guest-avatars">
                 {[4,5].map(i => (
-                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt="Guest" />
+                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt={t('common.guest')} />
                 ))}
-                <span>2 guests</span>
+                <span>2 {t('common.guests')}</span>
               </div>
-              <p className="event-date">Sept 6— Sept 12</p>
+              <p className="event-date">{t('dashboard.september')} 6 — {t('dashboard.september')} 12</p>
             </div>
             <div className="event-item">
-              <p className="room-info">Villa 1</p>
+              <p className="room-info">{t('rooms.room')} 1</p>
               <div className="guest-avatars">
                 {[6,7,8,9,10].map(i => (
-                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt="Guest" />
+                  <img key={i} src={`https://i.pravatar.cc/24?img=${i+30}`} alt={t('common.guest')} />
                 ))}
-                <span>5 guests</span>
+                <span>5 {t('common.guests')}</span>
               </div>
-              <p className="event-date">Sept 4 — Sept 12</p>
+              <p className="event-date">{t('dashboard.september')} 4 — {t('dashboard.september')} 12</p>
             </div>
           </div>
-          <p className="calendar-rooms">3 rooms occupied</p>
-          <h4 className="calendar-month">October</h4>
+          <p className="calendar-rooms">3 {t('rooms.room', { count: 3 })} {t('dashboard.occupied')}</p>
+          <h4 className="calendar-month">{t('dashboard.october')}</h4>
         </div>
 
         {/* Activity Log */}
         <div className="card activity-card">
-          <h3>Activity Log</h3>
+          <h3>{t('dashboard.activityLog')}</h3>
           {data.activities.map(activity => (
             <div key={activity.id} className="activity-item">
               <div className="activity-content">
-                <p className="activity-room">Room {activity.room}</p>
+                <p className="activity-room">{t('rooms.room')} {activity.room}</p>
                 <p className="activity-action">
-                  {activity.action.includes('Guest') && <strong>Guest </strong>}
+                  {activity.action.includes('Guest') && <strong>{t('common.guest')} </strong>}
                   {activity.action.includes('Maria Peterson') && <strong>Maria Peterson </strong>}
                   {activity.action.replace('Guest ', '').replace('Maria Peterson ', '')}
                 </p>

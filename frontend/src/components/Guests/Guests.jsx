@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { FiSearch, FiFilter, FiX, FiEdit2, FiDollarSign } from 'react-icons/fi';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './Guests.css';
 
 const Guests = () => {
+  const { t } = useTranslation();
   const [guests, setGuests] = useState([]);
   const [selectedGuest, setSelectedGuest] = useState(null);
   const [showAllGuests, setShowAllGuests] = useState(false);
@@ -31,30 +33,30 @@ const Guests = () => {
   return (
     <div className="guests">
       <div className="guests-header">
-        <h1>Guests</h1>
+        <h1>{t('guests.title')}</h1>
         <div className="header-controls">
           <div className="search-box">
             <FiSearch />
-            <input type="text" placeholder="Quick search" />
+            <input type="text" placeholder={t('common.search')} />
           </div>
           <button className="filter-btn">
-            <FiFilter /> Filter
+            <FiFilter /> {t('common.filter')}
           </button>
         </div>
       </div>
 
       <div className="guests-content">
         <div className="guests-table-container">
-          <h2>{showAllGuests ? 'All Guests' : 'Most Recent'}</h2>
+          <h2>{showAllGuests ? t('guests.allGuests') : t('guests.mostRecent')}</h2>
           <table className="guests-table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Reservations</th>
-                <th>Nights stayed</th>
-                <th>Last visit</th>
-                <th>Group</th>
+                <th>{t('guests.name')}</th>
+                <th>{t('guests.reservations')}</th>
+                <th>{t('guests.nightsStayed')}</th>
+                <th>{t('guests.lastVisit')}</th>
+                <th>{t('guests.group')}</th>
               </tr>
             </thead>
             <tbody>
@@ -82,16 +84,16 @@ const Guests = () => {
           
           {!showAllGuests && (
             <div className="show-all-section">
-              <h2>All Guests</h2>
+              <h2>{t('guests.allGuests')}</h2>
               <table className="guests-table">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Reservations</th>
-                    <th>Nights stayed</th>
-                    <th>Last visit</th>
-                    <th>Group</th>
+                    <th>{t('guests.name')}</th>
+                    <th>{t('guests.reservations')}</th>
+                    <th>{t('guests.nightsStayed')}</th>
+                    <th>{t('guests.lastVisit')}</th>
+                    <th>{t('guests.group')}</th>
                   </tr>
                 </thead>
               </table>
@@ -99,7 +101,7 @@ const Guests = () => {
                 className="show-all-btn"
                 onClick={() => setShowAllGuests(true)}
               >
-                Show all guests
+                {t('guests.showAllGuests')}
               </button>
             </div>
           )}
@@ -114,10 +116,10 @@ const Guests = () => {
                 </button>
                 <div className="modal-actions">
                   <button className="btn-outline">
-                    <FiEdit2 /> New Reservation
+                    <FiEdit2 /> {t('guests.newReservation')}
                   </button>
                   <button className="btn-outline">
-                    <FiDollarSign /> Payment
+                    <FiDollarSign /> {t('guests.payment')}
                   </button>
                 </div>
               </div>
@@ -137,73 +139,67 @@ const Guests = () => {
               </div>
 
               <div className="guest-tabs">
-                <button className="tab active">Guest Details</button>
-                <button className="tab">Stay Details</button>
-                <button className="tab">History</button>
-                <button className="tab">Notes</button>
-                <button className="tab">Documents</button>
+                <button className="tab active">{t('guests.guestDetails')}</button>
+                <button className="tab">{t('guests.stayDetails')}</button>
+                <button className="tab">{t('guests.history')}</button>
+                <button className="tab">{t('guests.notes')}</button>
+                <button className="tab">{t('guests.documents')}</button>
               </div>
 
               <div className="guest-info">
                 <section>
-                  <h3>CONTACT INFORMATION</h3>
+                  <h3>{t('guests.contactInformation')}</h3>
                   <div className="info-row">
-                    <label>First Name</label>
+                    <label>{t('guests.firstName')}</label>
                     <span>{selectedGuest.firstName}</span>
                   </div>
                   <div className="info-row">
-                    <label>Last Name</label>
+                    <label>{t('guests.lastName')}</label>
                     <span>{selectedGuest.lastName}</span>
                   </div>
                   <div className="info-row">
-                    <label>Email</label>
+                    <label>{t('guests.email')}</label>
                     <span>{selectedGuest.email}</span>
                   </div>
                   <div className="info-row">
-                    <label>Phone</label>
+                    <label>{t('guests.phone')}</label>
                     <span>{selectedGuest.phone}</span>
                   </div>
                   <div className="info-row">
-                    <label>Sex</label>
+                    <label>{t('guests.sex')}</label>
                     <span>{selectedGuest.sex}</span>
                   </div>
-                  {selectedGuest.phone && (
-                    <div className="info-row">
-                      <label>Phone</label>
-                      <span>{selectedGuest.phone}</span>
-                    </div>
-                  )}
                 </section>
 
                 <section>
-                  <h3>ADDRESS</h3>
+                  <h3>{t('guests.address')}</h3>
                   <div className="info-row">
-                    <label>Country</label>
+                    <label>{t('guests.country')}</label>
                     <span>{selectedGuest.country}</span>
                   </div>
                   <div className="info-row">
-                    <label>City</label>
+                    <label>{t('guests.city')}</label>
                     <span>{selectedGuest.city}</span>
                   </div>
                   <div className="info-row">
-                    <label>Address</label>
+                    <label>{t('guests.address')}</label>
                     <span>{selectedGuest.address}</span>
                   </div>
                 </section>
 
                 {selectedGuest.spouse && (
                   <section>
-                    <h3>FAMILY MEMBERS</h3>
+                    <h3>{t('guests.familyMembers')}</h3>
                     <div className="info-row">
-                      <label>Spouse</label>
+                      <label>{t('guests.spouse')}</label>
                       <div className="family-member">
-                        <img src="https://i.pravatar.cc/24?img=70" alt="Spouse" />
+                        <img src="https://i.pravatar.cc/24?img=70" alt={t('guests.spouse')} />
                         <span>{selectedGuest.spouse}</span>
                       </div>
                     </div>
                     {selectedGuest.children?.map((child, i) => (
                       <div key={i} className="info-row">
-                        <label>Child {i + 1}</label>
+                        <label>{t('guests.child')} {i + 1}</label>
                         <div className="family-member">
                           <img src={`https://i.pravatar.cc/24?img=${71+i}`} alt={child} />
                           <span>{child}</span>

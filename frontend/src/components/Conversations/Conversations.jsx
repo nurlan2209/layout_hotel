@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { FiSearch, FiFilter, FiX, FiPhone, FiMail, FiPaperclip, FiSend } from 'react-icons/fi';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './Conversations.css';
 
 const Conversations = () => {
+  const { t } = useTranslation();
   const [conversations, setConversations] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -14,7 +16,6 @@ const Conversations = () => {
       const convData = await import('../../mockData/conversations.json');
       const guestsData = await import('../../mockData/guests.json');
       
-      // Merge guest data with conversations
       const enrichedConversations = convData.conversations.map(conv => {
         const guest = guestsData.guests.find(g => g.id === conv.guestId);
         return { ...conv, guestData: guest };
@@ -22,7 +23,7 @@ const Conversations = () => {
       
       setConversations(enrichedConversations);
       if (enrichedConversations.length > 0) {
-        setSelectedConversation(enrichedConversations[1]); // Select Ea Tipene by default
+        setSelectedConversation(enrichedConversations[1]);
       }
     };
 
@@ -40,18 +41,18 @@ const Conversations = () => {
   return (
     <div className="conversations">
       <div className="conversations-header">
-        <h1>Conversations</h1>
+        <h1>{t('conversations.title')}</h1>
         <div className="header-controls">
           <div className="search-box">
             <FiSearch />
-            <input type="text" placeholder="Quick search" />
+            <input type="text" placeholder={t('common.search')} />
           </div>
           <button className="filter-btn">
-            <FiFilter /> Filter
+            <FiFilter /> {t('common.filter')}
           </button>
           <div className="status-indicator">
             <span className="status-dot online"></span>
-            <span>Online</span>
+            <span>{t('conversations.online')}</span>
           </div>
         </div>
       </div>
@@ -93,15 +94,15 @@ const Conversations = () => {
                   <div>
                     <h3>{selectedConversation.guest}</h3>
                     {selectedConversation.room && (
-                      <p>Room: {selectedConversation.room} • {selectedConversation.checkIn} — {selectedConversation.checkOut}</p>
+                      <p>{t('rooms.room')}: {selectedConversation.room} • {selectedConversation.checkIn} — {selectedConversation.checkOut}</p>
                     )}
                   </div>
                   {selectedConversation.status === 'online' && (
-                    <span className="online-badge">• Online</span>
+                    <span className="online-badge">• {t('conversations.online')}</span>
                   )}
                 </div>
                 <button className="create-task-btn" onClick={() => setShowTaskPanel(true)}>
-                  Create a task
+                  {t('conversations.createTask')}
                 </button>
                 <button className="close-btn">
                   <FiX />
@@ -127,15 +128,20 @@ const Conversations = () => {
                     )}
                     {msg.sender === 'hotel' && (
                       <div className="message-footer">
-                        <span className="message-sender">Ann Tsibuiski (you) assigned to this conversation</span>
-                        <span className="message-time">{msg.time} {msg.reaction && `(Reaction ${msg.reaction} sec)`}</span>
+                        <span className="message-sender">{t('conversations.youAssigned')}</span>
+                        <span className="message-time">{msg.time} {msg.reaction && `(${t('conversations.reaction')} ${msg.reaction} ${t('conversations.seconds')})`}</span>
                       </div>
                     )}
                   </div>
                 ))}
                 {!selectedConversation.messages?.length && (
                   <div className="no-messages">
-                    <p>{selectedConversation.status === 'expired' ? 'Expired chats' : 'No messages yet'}</p>
+                    <p>
+                      {selectedConversation.status === 'expired' 
+                        ? t('conversations.expiredChats') 
+                        : t('conversations.noMessagesYet')
+                      }
+                    </p>
                   </div>
                 )}
               </div>
@@ -143,7 +149,7 @@ const Conversations = () => {
               <div className="message-input">
                 <input 
                   type="text" 
-                  placeholder="Reply..."
+                  placeholder={t('conversations.replyPlaceholder')}
                   value={messageText}
                   onChange={(e) => setMessageText(e.target.value)}
                 />
@@ -165,76 +171,76 @@ const Conversations = () => {
                   alt={selectedConversation.guest} 
                 />
                 <h2>{selectedConversation.guest}</h2>
-                <span className="trusted-badge">Trusted</span>
+                <span className="trusted-badge">{t('conversations.trusted')}</span>
                 <div className="guest-actions">
-                  <button><FiPhone /> Call</button>
-                  <button><FiMail /> Email</button>
+                  <button><FiPhone /> {t('conversations.call')}</button>
+                  <button><FiMail /> {t('conversations.email')}</button>
                 </div>
               </div>
 
               <div className="guest-details">
                 <div className="detail-tabs">
-                  <button className="active">Guest Details</button>
-                  <button>Stay Details</button>
-                  <button>History</button>
-                  <button>Notes</button>
-                  <button>Documents</button>
+                  <button className="active">{t('guests.guestDetails')}</button>
+                  <button>{t('guests.stayDetails')}</button>
+                  <button>{t('guests.history')}</button>
+                  <button>{t('guests.notes')}</button>
+                  <button>{t('guests.documents')}</button>
                 </div>
 
                 <div className="detail-content">
                   <section>
-                    <h4>CONTACT INFORMATION</h4>
+                    <h4>{t('guests.contactInformation')}</h4>
                     <div className="detail-row">
-                      <label>First Name</label>
+                      <label>{t('guests.firstName')}</label>
                       <span>{selectedConversation.guestData.firstName}</span>
                     </div>
                     <div className="detail-row">
-                      <label>Last Name</label>
+                      <label>{t('guests.lastName')}</label>
                       <span>{selectedConversation.guestData.lastName}</span>
                     </div>
                     <div className="detail-row">
-                      <label>Email</label>
+                      <label>{t('guests.email')}</label>
                       <span>{selectedConversation.guestData.email}</span>
                     </div>
                     <div className="detail-row">
-                      <label>Phone</label>
+                      <label>{t('guests.phone')}</label>
                       <span>{selectedConversation.guestData.phone}</span>
                     </div>
                     <div className="detail-row">
-                      <label>Sex</label>
+                      <label>{t('guests.sex')}</label>
                       <span>{selectedConversation.guestData.sex}</span>
                     </div>
                   </section>
 
                   <section>
-                    <h4>ADDRESS</h4>
+                    <h4>{t('guests.address')}</h4>
                     <div className="detail-row">
-                      <label>Country</label>
+                      <label>{t('guests.country')}</label>
                       <span>{selectedConversation.guestData.country}</span>
                     </div>
                     <div className="detail-row">
-                      <label>City</label>
+                      <label>{t('guests.city')}</label>
                       <span>{selectedConversation.guestData.city}</span>
                     </div>
                     <div className="detail-row">
-                      <label>Address</label>
+                      <label>{t('guests.address')}</label>
                       <span>{selectedConversation.guestData.address}</span>
                     </div>
                   </section>
 
                   {selectedConversation.guestData.spouse && (
                     <section>
-                      <h4>FAMILY MEMBERS</h4>
+                      <h4>{t('guests.familyMembers')}</h4>
                       <div className="detail-row">
-                        <label>Spouse</label>
+                        <label>{t('guests.spouse')}</label>
                         <span className="family-member">
-                          <img src="https://i.pravatar.cc/24?img=60" alt="Spouse" />
+                          <img src="https://i.pravatar.cc/24?img=60" alt={t('guests.spouse')} />
                           {selectedConversation.guestData.spouse}
                         </span>
                       </div>
                       {selectedConversation.guestData.children?.map((child, i) => (
                         <div key={i} className="detail-row">
-                          <label>Child {i + 1}</label>
+                          <label>{t('guests.child')} {i + 1}</label>
                           <span className="family-member">
                             <img src={`https://i.pravatar.cc/24?img=${61+i}`} alt={child} />
                             {child}
@@ -247,7 +253,7 @@ const Conversations = () => {
 
                 {showTaskPanel && (
                   <div className="tasks-panel">
-                    <h4>Tasks</h4>
+                    <h4>{t('conversations.tasks')}</h4>
                     <div className="task-options">
                       <label>
                         <input 
@@ -255,7 +261,7 @@ const Conversations = () => {
                           onChange={() => handleTaskToggle('clean')}
                           checked={selectedTasks.includes('clean')}
                         />
-                        Clean up room
+                        {t('conversations.cleanRoom')}
                       </label>
                       <label>
                         <input 
@@ -263,7 +269,7 @@ const Conversations = () => {
                           onChange={() => handleTaskToggle('linen')}
                           checked={selectedTasks.includes('linen')}
                         />
-                        Change linen and towels when guests are out.
+                        {t('conversations.changeLinenTowels')}
                       </label>
                       <label>
                         <input 
@@ -271,10 +277,10 @@ const Conversations = () => {
                           onChange={() => handleTaskToggle('bottle')}
                           checked={selectedTasks.includes('bottle')}
                         />
-                        Bring complimentary bottle of red wine
+                        {t('conversations.complimentaryWine')}
                       </label>
                     </div>
-                    <button className="all-tasks-btn">ALL TASKS</button>
+                    <button className="all-tasks-btn">{t('conversations.allTasks')}</button>
                   </div>
                 )}
               </div>

@@ -1,0 +1,50 @@
+{
+  "common": {
+    "search": "Жылдам іздеу",
+    "filter": "Сүзгі",
+    "view": "Көрініс",
+    "createTask": "Тапсырма жасау",
+    "newGuest": "Жаңа қонақ",
+    "newReservation": "Жаңа брондау"
+  },
+  "dashboard": {
+    "title": "Басқару панелі",
+    "overview": "Шолу",
+    "satisfactionRate": "Қанағаттану деңгейі",
+    "bookings": "Брондаулар",
+    "newGuests": "Жаңа қонақтар"
+  },
+  "conversations": {
+    "title": "Хабарламалар",
+    "online": "Желіде",
+    "replyPlaceholder": "Жауап беру..."
+  },
+  "guests": {
+    "title": "Қонақтар",
+    "mostRecent": "Соңғы",
+    "allGuests": "Барлық қонақтар",
+    "showAllGuests": "Барлық қонақтарды көрсету"
+  },
+  "tasks": {
+    "title": "Тапсырмалар",
+    "columns": {
+      "inbox": "Кіріс",
+      "next": "Келесі",
+      "inProgress": "Орындалуда",
+      "finished": "Аяқталды", 
+      "failed": "Сәтсіз"
+    }
+  },
+  "rooms": {
+    "title": "Бөлмелер",
+    "views": {
+      "timeline": "Уақыт желісі",
+      "scheme": "Сызба"
+    },
+    "roomTypes": {
+      "standard": "СТАНДАРТТЫ БӨЛМЕЛЕР",
+      "superior": "ЛЮКС БӨЛМЕЛЕР",
+      "villas": "ВИЛЛАЛАР"
+    }
+  }
+}
